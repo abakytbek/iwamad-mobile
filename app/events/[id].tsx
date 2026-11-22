@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack, useLocalSearchParams } from 'expo-router';
 
 import { useEvents } from '../../src/hooks/useEvents';
+import HolidayNote from '../../src/components/HolidayNote';
 
 export default function EventDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -50,9 +51,12 @@ export default function EventDetailsScreen() {
     <Stack.Screen options={{ title: 'Event Details' }} />
 
     <Text style={styles.title}>{event.title}</Text>
-    <Text style={styles.info}>Date: {event.date}</Text>
-    <Text style={styles.info}>Place: {event.place}</Text>
-    <Text style={styles.info}>Seats: {event.seats}</Text>
+  <Text style={styles.info}>Date: {event.date}</Text>
+
+  <HolidayNote date={event.date} />
+
+  <Text style={styles.info}>Place: {event.place}</Text>
+  <Text style={styles.info}>Seats: {event.seats}</Text>
   </SafeAreaView>
 );
 }
